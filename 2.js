@@ -1,14 +1,10 @@
 function convertToRoman(num) {
 	let remainder = num;
-	let romanArr = [];
+	let romanStr = [];
 	const numeralFunc = (num, str) => {
-		if (remainder >= num) {
-			let i = Math.floor(remainder / num)
-			remainder = remainder - i * num;
-			while (i > 0) {
-				romanArr.push(str);
-				i--
-			}
+		while (remainder >= num) {
+			remainder -= num;
+			romanStr += str;
 		}  
 	}
 	numeralFunc(1000, "M");
@@ -24,7 +20,7 @@ function convertToRoman(num) {
 	numeralFunc(5, "V");
 	numeralFunc(4, "IV");
 	numeralFunc(1, "I");
-	return romanArr.join("")
+	return romanStr;
 }
 
-console.log(convertToRoman(2019));
+console.log(convertToRoman(34261841));
